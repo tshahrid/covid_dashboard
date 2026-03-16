@@ -142,10 +142,9 @@ with tab1:
 
     # Summary metrics
     st.divider()
-    col1, col2, col3 = st.columns(3)
+    col1, col2 = st.columns(2)
     col1.metric("Peak Count",    f"{df_country['Count'].max():,.0f}")
-    col2.metric("Total by End",  f"{df_country['Count'].iloc[-1]:,.0f}" if not df_country.empty else "N/A")
-    col3.metric("First Case",    str(df_country[df_country["Count"] > 0]["Date"].min().date()) if not df_country.empty else "N/A")
+    col2.metric("First Case",    str(df_country[df_country["Count"] > 0]["Date"].min().date()) if not df_country.empty else "N/A")
 
 # TAB 2 — Region trend over time
 
