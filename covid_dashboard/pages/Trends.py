@@ -100,9 +100,8 @@ covid_long = load_data()
 
 tab1, tab2, tab3, tab4 = st.tabs(["By Country", "By Region", "Compare Countries", "Daily Counts"])
 
-# ════════════════════════════════════════════════════════════════
 # TAB 1 — Single country trend over time
-# ════════════════════════════════════════════════════════════════
+
 with tab1:
     st.subheader("Trend for a Single Country")
 
@@ -148,10 +147,8 @@ with tab1:
     col2.metric("Total by End",  f"{df_country['Count'].iloc[-1]:,.0f}" if not df_country.empty else "N/A")
     col3.metric("First Case",    str(df_country[df_country["Count"] > 0]["Date"].min().date()) if not df_country.empty else "N/A")
 
-
-# ════════════════════════════════════════════════════════════════
 # TAB 2 — Region trend over time
-# ════════════════════════════════════════════════════════════════
+
 with tab2:
     st.subheader("Trend by Region Over Time")
 
@@ -198,9 +195,8 @@ with tab2:
     st.plotly_chart(fig2, use_container_width=True)
 
 
-# ════════════════════════════════════════════════════════════════
 # TAB 3 — Compare multiple countries
-# ════════════════════════════════════════════════════════════════
+
 with tab3:
     st.subheader("Compare Multiple Countries")
 
@@ -253,9 +249,9 @@ with tab3:
     else:
         st.info("Please select at least one country to compare.")
 
-# ════════════════════════════════════════════════════════════════
+
 # TAB 4 — Daily Counts
-# ════════════════════════════════════════════════════════════════
+
 with tab4:
     st.subheader("Daily Counts")
 
@@ -314,12 +310,3 @@ with tab4:
     col2.metric("Average Daily Count", f"{df_daily['Daily Count'].mean():,.1f}")
     col3.metric("Peak Date", str(df_daily.loc[df_daily["Daily Count"].idxmax(), "Date"].date())
                 if not df_daily.empty else "N/A")
-
-    # Raw data table
-    with st.expander("View Raw Data"):
-        st.dataframe(
-            df_daily[["Date", "Daily Count"]]
-            .sort_values("Date", ascending=False)
-            .reset_index(drop=True),
-            use_container_width=True
-        )
