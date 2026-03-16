@@ -236,16 +236,6 @@ with tab3:
         fig3.update_layout(height=450, hovermode="x unified")
         st.plotly_chart(fig3, use_container_width=True)
 
-        # Comparison table
-        with st.expander("View Comparison Table"):
-            latest = df_compare.groupby("Country/Territory").last().reset_index()
-            st.dataframe(
-                latest[["Country/Territory", "Count"]]
-                .rename(columns={"Count": f"Total {metric3}"})
-                .sort_values(f"Total {metric3}", ascending=False)
-                .reset_index(drop=True),
-                use_container_width=True
-            )
     else:
         st.info("Please select at least one country to compare.")
 
