@@ -24,6 +24,6 @@ col1, col2, col3 = st.columns(3)
 with col1:
         st.link_button("Learn About COVID-19", "https://www.hopkinsguides.com/hopkins/view/Johns_Hopkins_ABX_Guide/540747/all/Coronavirus_COVID_19__SARS_CoV_2_")
 with col2:
-        st.link_button("WHO Live Dashboard", "https://www.who.int")
+        st.link_button("WHO Live Dashboard", "https://data.who.int/dashboards/covid19/cases")
 with col3:
         st.link_button("JHU Raw Data (GitHub)", "https://github.com/CSSEGISandData/COVID-19/blob/master/README.md")
